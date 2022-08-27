@@ -2,15 +2,7 @@ from matplotlib import pyplot as plt
 from matplotlib import animation
 from math import sin, cos, pi
 from physcis_systems.dynamic_spring import spring
-
-
-def lin_space(min, max, samples):
-    spaces = []
-    for i in range(samples):
-        temp = min + i * (max - min) / (samples - 1)
-        spaces.append(temp)
-
-    return spaces
+from lin_alg_tools.lin_alg_tools import lin_space
 
 
 fig = plt.figure()
@@ -57,6 +49,6 @@ def animate(i):
 anim = animation.FuncAnimation(fig, animate, init_func=init,
                                frames=600, interval=20, blit=True)
 
-anim.save('../gifs/circular_race.gif', writer='imagemagick', fps=30)
+# anim.save('../gifs/circular_race.gif', writer='imagemagick', fps=30)
 
 plt.show()

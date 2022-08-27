@@ -1,7 +1,7 @@
 from math import sqrt
 
 
-def spring(start, end, elbows, width, init_len=2):
+def spring(start, end, elbows, width, init_len=1):
     r_start = start
     r_end = end
     n = elbows
@@ -26,6 +26,7 @@ def spring(start, end, elbows, width, init_len=2):
     else:
         r1 = [r_start[0]]
         r2 = [r_start[1]]
+        
     for r in r_s:
         r1.append(r[0])
         r2.append(r[1])
