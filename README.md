@@ -2,7 +2,7 @@
 
 After creating the spring visualization, it was discovered that the
 function made it simple to make quite the mesmerizing animations, such as
-the:
+the animations shown below.
 
 #### Circular spring race
 <p align="center">
