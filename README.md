@@ -7,6 +7,7 @@ factor and k is the spring constant.
 $$
     m\ddot x + b\dot x + k x = F(t)
 $$
+
 Where F(t) = 0
 
 <p align="center">
