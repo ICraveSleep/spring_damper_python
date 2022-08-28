@@ -50,7 +50,7 @@ def animate(i):
                 if c < theta[0]:
                     c = i * 0.1 + 9 * theta[0]
 
-    s_a, s_b = damper([a, b], [c, d], side_len=3, width=1, init_len=2)
+    s_a, s_b = damper([a, b], [c, d], side_len=8, width=1, init_len=2)
 
     line.set_data(a, b)
     line2.set_data(c, d)

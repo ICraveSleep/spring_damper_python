@@ -13,8 +13,8 @@ def damper(start: [], end: [], init_len=1, side_len=1, width=1):
     p_y.append(init_len*u_t[1] + start[1])
     p_xm = p_x[-1]
     p_ym = p_y[-1]
-    p_x.append(width*u_n[0]+p_xm + start[0])
-    p_y.append(width*u_n[1]+p_ym + start[1])
+    p_x.append(width*u_n[0]+p_xm)
+    p_y.append(width*u_n[1]+p_ym)
     p_x.append(p_xm+width*u_n[0]+side_len*u_t[0])
     p_y.append(p_ym+width * u_n[1]+side_len*u_t[1])
     p_x.append(width * u_n[0] + p_xm)
@@ -33,8 +33,8 @@ def damper(start: [], end: [], init_len=1, side_len=1, width=1):
     p_y.append(-width * u_n[1] + p_ym + travel*u_t[1])
 
     # Create Travel line
-    p_x.append(width * u_n[0] + p_xm - travel*u_n[0])
-    p_y.append(width * u_n[1] + p_ym + travel * u_n[1])
+    p_x.append(width * u_n[0] + p_xm + travel * u_t[0])
+    p_y.append(width * u_n[1] + p_ym + travel * u_t[1])
 
     # Go to center of travel line
     p_x.append(-width * u_n[0] + p_xm + travel * u_t[0] + width*u_n[0])
