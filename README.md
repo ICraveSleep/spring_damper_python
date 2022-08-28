@@ -5,8 +5,9 @@ has been applied, where m is the weight of the mass, b is the damping
 factor and k is the spring constant.
 
 $$
-    m\ddot x + b\dot x + k x
+    m\ddot x + b\dot x + k x = F(t)
 $$
+Where F(t) = 0
 
 <p align="center">
     <img src="gifs/spring_damper.gif"/>

@@ -82,11 +82,11 @@ if __name__ == '__main__':
         return line3, line4, box, time_text
 
     interval = 20
-
+    print(len(time))
     # call the animator.  blit=True means only re-draw the parts that have changed.
     anim = animation.FuncAnimation(fig, animate, init_func=init,
                                    frames=len(time), interval=interval, blit=True)
 
-    anim.save('gifs/spring_damper.gif', writer='imagemagick', fps=30)
+    #anim.save('gifs/spring_damper.gif', writer='imagemagick', fps=30)
 
     plt.show()
