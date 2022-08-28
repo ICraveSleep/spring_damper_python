@@ -1,11 +1,10 @@
 from matplotlib import pyplot as plt
 from matplotlib import animation
-from math import sin, cos, pi
+from math import cos
 from physcis_systems.dynamic_damper import damper
-from lin_alg_tools.lin_alg_tools import lin_space
 
 fig = plt.figure()
-ax = plt.axes(xlim=(0, 2), ylim=(-2, 2))
+ax = plt.axes()
 line, = ax.plot([], [], lw="20", marker='o')
 line2, = ax.plot([], [], lw="20", marker='o', color="r")
 line3, = ax.plot([], [], lw="2", color="k")

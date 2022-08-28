@@ -1,4 +1,7 @@
 # Spring Damper
+<p align="center">
+    <img src="gifs/spring_damper.gif"/>
+</p>
 
 After creating the spring visualization, it was discovered that the
 function made it simple to make quite the mesmerizing animations, such as
