@@ -2,17 +2,28 @@ from matplotlib import pyplot as plt
 from matplotlib import animation
 from physcis_systems.dynamic_spring import spring
 from physcis_systems.dynamic_damper import damper
-from math import cos
 import numpy as np
 from numpy.linalg import inv
-from lin_alg_tools.lin_alg_tools import lin_space, lin_range
+from lin_alg_tools.lin_alg_tools import lin_range
 
 if __name__ == '__main__':
+    # TODO Clean up this abomination of a code
+    def compress(x, time, fps):
+        x_new = [x[0]]
+        time_new = [time[0]]
+        compress_value = 1 / fps
+        counter = 0
+        for i in time:
+            if i > compress_value:
+                x_new.append(x[counter])
+                time_new.append(time[counter])
+                compress_value += 1 / fps
+            counter += 1
+        return x_new, time_new
+
     # Animation
     fig = plt.figure()
     ax = plt.axes(xlim=(0, 2), ylim=(-2, 2))
-    line, = ax.plot([], [], lw="20", marker='o')
-    line2, = ax.plot([], [], lw="20", marker='o', color="r")
     line3, = ax.plot([], [], lw="2", color="k")
     line4, = ax.plot([], [], lw="2", color="k")
     box, = ax.plot([], [], linestyle='None', marker='s', markersize=60, markeredgecolor='k', color='orange',
@@ -43,16 +54,14 @@ if __name__ == '__main__':
     for t in time:
         y = y + dt * A_inv.dot(F - B.dot(y))
         sim.append(y[0])
-
+    sim, time = compress(sim, time, 30)
     # initialization function: plot the background of each frame
     def init():
-        line.set_data([], [])
-        line2.set_data([], [])
         line3.set_data([], [])
         line4.set_data([], [])
         box.set_data([], [])
         time_text.set_text('')
-        return line, line2, line3, line4, box, time_text
+        return line3, line4, box, time_text
 
     # animation function.  This is called sequentially
     def animate(i):
@@ -66,20 +75,18 @@ if __name__ == '__main__':
         s_a, s_b = spring([a + shift, b], [c + shift, d], coils=20, width=1, init_len=1)
         s_c, s_d = damper([a - shift, b], [c - shift, d], side_len=4.5, width=0.5, init_len=4.5)
 
-       # line.set_data(a, b)
-       # line2.set_data(c, d)
         line3.set_data(s_a, s_b)
         line4.set_data(s_c, s_d)
         box.set_data(c, d - 2.15)
         time_text.set_text(time_template % time[i])
-        return line3, line4, box, line, line2, time_text
+        return line3, line4, box, time_text
 
-    interval = 1
+    interval = 20
 
     # call the animator.  blit=True means only re-draw the parts that have changed.
     anim = animation.FuncAnimation(fig, animate, init_func=init,
                                    frames=len(time), interval=interval, blit=True)
 
-    # anim.save('gifs/spring_damper.gif', writer='imagemagick', fps=30)
+    #  anim.save('gifs/spring_damper.gif', writer='imagemagick', fps=30)
 
     plt.show()
